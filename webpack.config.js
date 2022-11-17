@@ -3,6 +3,7 @@ const HtmlPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin"); 
 const { VueLoaderPlugin } = require('vue-loader')
+const webpack = require('webpack')
 
 module.exports = {
   resolve: {
@@ -37,7 +38,12 @@ module.exports = {
           // 순서 중요
           'vue-style-loader',
           //'style-loader',
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+                esModule: false,
+            },
+          },
           'css-loader',
           'postcss-loader',
           {
@@ -77,6 +83,10 @@ module.exports = {
       ]
     }),
     new MiniCssExtractPlugin(),
+    new webpack.DefinePlugin({
+      __VUE_OPTIONS_API__: true,
+      __VUE_PROD_DEVTOOLS__: true,
+    }),
   ],
 
   // 개발 서버 옵션
