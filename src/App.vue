@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/no-reserved-component-names -->
 <template>
   <Header />
   <RouterView />
