@@ -1,7 +1,6 @@
 const path = require('path')
 const HtmlPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin"); 
 const { VueLoaderPlugin } = require('vue-loader')
 const webpack = require('webpack')
 
@@ -37,9 +36,8 @@ module.exports = {
         use: [
           // 순서 중요
           'vue-style-loader',
-          //'style-loader',
           {
-            loader: MiniCssExtractPlugin.loader,
+            loader: 'style-loader',
             options: {
                 esModule: false,
             },
@@ -82,7 +80,7 @@ module.exports = {
         { from: 'static' }
       ]
     }),
-    new MiniCssExtractPlugin(),
+
     new webpack.DefinePlugin({
       __VUE_OPTIONS_API__: true,
       __VUE_PROD_DEVTOOLS__: true,
