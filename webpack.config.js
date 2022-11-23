@@ -50,7 +50,8 @@ module.exports = {
               sourceMap: true,
               sassOptions: {
                 quietDeps: ["node_modules/bootstrap/**/*.scss"],
-              }
+              },
+              additionalData: '@import "~/scss/main";'
             }
           }
         ]
