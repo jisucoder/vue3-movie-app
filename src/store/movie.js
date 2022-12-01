@@ -72,7 +72,7 @@ export default {
           })
         }
       }
-     } catch(message) {
+     } catch({message}) {   //네트워크상으로 주고 받기 때문에 error객체가 반환(객체구조분해)
       commit('updateState', {
         movies: [],
         message
@@ -110,25 +110,7 @@ export default {
   }
 }
 
-function _fetchMovie(payload) {
-  const { title, type, year, page, id } = payload
-  const OMDB_API_KEY = '7035c60c'
-  const url = id
-  ? `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${id}`
-  : `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${title}&type=${type}&y=${year}&page=${page}`
-
-  return new Promise((resolve, reject)=>{
-    axios.get(url)
-      .then(res => {
-        if(res.data.Error){
-          reject(res.data.Error)
-        }
-        resolve(res)
-      })
-      .catch((err)=>{
-        reject(err.message)
-      })
-  })
-
+async function _fetchMovie(payload) {
+  return await axios.post('/.netlify/functions/movie', payload)
 }
 

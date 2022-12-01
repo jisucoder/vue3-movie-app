@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --mode development",
+    "dev:netlify": "netlify dev",
     "build": "webpack --mode production"
   },
   "keywords": [],
@@ -26,6 +27,7 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
+    "netlify-cli": "^12.2.8",
     "postcss": "^8.4.18",
     "postcss-loader": "^7.0.1",
     "sass": "^1.56.1",
