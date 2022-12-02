@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <div class="photo">
-      <Loader
+      <Loader 
         v-if="imageLoading"
         absolute />
       <img
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {mapState} from 'vuex'
 import Loader from '~/components/Loader'
 
 export default {
@@ -37,30 +37,15 @@ export default {
       'email',
       'blog',
       'phone'
-    ])
-    // image() {
-    //   return this.$store.state.about.image
-    // },
-    // name() {
-    //   return this.$store.state.about.name
-    // },
-    // email() {
-    //   return this.$store.state.about.email
-    // },
-    // blog() {
-    //   return this.$store.state.about.blog
-    // },
-    // phone() {
-    //   return this.$store.state.about.phone
-    // }
+    ]),
   },
   mounted() {
-    this.init() //mounted, created는 비동기 X
+    this.init()
   },
   methods: {
-  init() {
-    this.$loadImage(this.image)
-    this.imageLoading = false
+    async init() {
+      await this.$loadImage(this.image)
+      this.imageLoading =false
     }
   }
 }
