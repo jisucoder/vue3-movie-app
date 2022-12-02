@@ -34,7 +34,7 @@ export default {
     ...mapState('about', [
       'image',
       'name',
-      'eamil',
+      'email',
       'blog',
       'phone'
     ])
